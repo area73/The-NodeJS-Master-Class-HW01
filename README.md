@@ -1,28 +1,15 @@
 # The-NodeJS-Master-Class-HW01
 Home Work 01 for The NodeJS Master Class
 
-## Instalation
+## Installation
 These series of work are intended to be 0 module dependant , that means that no NPM or any other 
 module manager are needed in order to run the program, just plain NodeJS :)
 
-To run the server just open your terminal and from root of this project run:
+To run the server just open your terminal and from the root of this project run:
 
-    node server.js 
+    node index.js 
 
-Additionally there are some configuration parameter that you can define at start time:
-
-    --env:<dev || prod>     will define what enviroment you are working on (actually we setup 2 
-    enviroments, dev & prod)
-     
-     --ports:<http,https> define the port to be assigned to the server. If the port is taken it 
-     will 
-     show a 
-     warnin message and the server will try to get next upper port available
-     
-     --protocol:<http,https,all>  
-     
-     -H: Help showing this info
-     
+Additionally you can pass NODE_ENV = <dev || staging || prod> to get different servers config    
      
       
 

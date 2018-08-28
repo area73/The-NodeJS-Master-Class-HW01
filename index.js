@@ -7,14 +7,15 @@
 const http = require('http');
 const https = require('https');
 const config = require('./config/enviroments');
-const { router, handlers } = require('./router');
+const router = require('./routes/router');
 const reqUtil = require('./reqUtil');
 const { retry } = require('./serverUtils');
 
 
 const server = function (req, res) {
   const reqData = reqUtil(req);
-  const chosenHandler = router[reqData.trimmedPath] || handlers.notFound;
+  const chosenHandler = router[reqData.trimmedPath] || router.default;
+
   const executeResponse = () => {
     reqData.endPayloadData();
     chosenHandler(reqData, (statusCode, payload) => {
@@ -31,6 +32,8 @@ const server = function (req, res) {
   req.on('data', data => reqData.addPayloadData(data));
   req.on('end', executeResponse);
 };
+
+
 
 if (config.http) {
   const httpServer = http.createServer(server)

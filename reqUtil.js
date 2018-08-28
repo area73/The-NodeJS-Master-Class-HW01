@@ -10,7 +10,8 @@ const reqUtil = (req) => {
   const decoder = new StringDecoder('utf-8');
   const addPayloadData = (data) => { payload += decoder.write(data); };
   const endPayloadData = () => { payload += decoder.end(); };
-  const { headers, method } = req;
+  const method = req.method.toString().toLowerCase();
+  const { headers } = req;
   return {
     parsedUrl,
     path,
